@@ -6,14 +6,14 @@ class Restaurant
 		@@filepath = File.join(APP_ROOT, path)
 	end
 
-	# def self.file_exists?
-	# 	# class should know if restaurant file exists
-	# 	if @@filepath && File.exists?(@@filepath)
-	# 		return true
-	# 	else
-	# 		return false
-	# 	end
-	# end
+	def self.file_exists?
+		# class should know if restaurant file exists
+		if @@filepath && File.exists?(@@filepath)
+			return true
+		else
+			return false
+		end
+	end
 
 	def self.file_usable?
 		return false unless @@filepath
@@ -25,7 +25,7 @@ class Restaurant
 
 	def self.create_file
 		# create the restaurant file if it doesnt exist
-		File.open(@@filepath, 'w') unless file_usable?
+		File.open(@@filepath, 'w') unless file_exists?
 		return file_usable?
 	end
 
