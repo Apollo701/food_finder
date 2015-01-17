@@ -4,7 +4,7 @@
 module NumberHelper
 
 	def number_to_currency(number, options={})
-		unit				= options[:unit]			|| '$'
+		unit			= options[:unit]			|| '$'
 		precision		= options[:precision]	|| 2
 		delimiter		= options[:delimiter]	|| ','
 		separator		= options[:separator]	|| '.'
