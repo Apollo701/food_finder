@@ -71,7 +71,10 @@ class Guide
 		print "Average Price: "
 		restaurant.price = gets.chomp.strip
 
-		restaurant.save
+		if restaurant.save
+			puts "\nRestaurant Added\n\n"
+		else
+			puts "\nSave Error: restaurant not added\n\n"
 	end
 
 	def introduction
