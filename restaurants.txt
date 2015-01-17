@@ -1,3 +1,4 @@
 Hot Tomale	Mexican	25
 Cafe Masala	Indian	30
 Hard Rock	American	30
+pita pocket	fast food	10
