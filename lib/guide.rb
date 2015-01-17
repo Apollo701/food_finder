@@ -1,5 +1,10 @@
 require 'restaurant'
 class Guide
+	
+	class Config
+		@@actions = ['list', 'find', 'add', 'quit']
+		def self.actions; @@actions; end
+	end
 
 	def initialize(path=nil)
 		# locate the restaurant text file at path
@@ -21,15 +26,19 @@ class Guide
 		result = nil
 		until result == :quit
 		action = get_action
-		result = do_action(user_response)
+		result = do_action(action)
 		end
 			conclusion
 	end
 
 	def get_action
-		print "> "
-		user_response = gets.chomp
-		action = user_response.downcase.strip
+		action = nil
+		until Guide::Config.actions.include?(action)
+			puts "Actions: " + Guide::Config.actions.join(", ") if action
+			print "> "
+			user_response = gets.chomp
+			action = user_response.downcase.strip
+		end
 		return action
 	end
 
@@ -41,12 +50,28 @@ class Guide
 		when 'find'
 			puts 'Finding...'
 		when 'add'
-			puts 'Adding...'
+			add
 		when 'quit'
 			return :quit
 		else
 			puts "\nI don't understand that command.\n"
 		end
+	end
+
+	def add
+		puts "\nAdd a restaurant\n\n".upcase
+		restaurant = Restaurant.new
+
+		print "Restaurant name: "
+		restaurant.name = gets.chomp.strip
+
+		print "Cuisine type: "
+		restaurant.cuisine = gets.chomp.strip
+
+		print "Average Price: "
+		restaurant.price = gets.chomp.strip
+
+		restaurant.save
 	end
 
 	def introduction
