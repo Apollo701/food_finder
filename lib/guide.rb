@@ -16,7 +16,7 @@ class Guide
 	end
 
 	def introduction
-		puts "\n\n << Welcome to the Food Finder >>\n\n"
+		puts "\n\n<< Welcome to the Food Finder >>\n\n"
 		puts "This is an interactive guide to help you find the food you crave.\n\n"
 	end
 
